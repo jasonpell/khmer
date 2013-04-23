@@ -90,6 +90,10 @@ public:
       maxErrorRegion = maxErrorReg;
    }
 
+   void newScores(double mat, double snp, double ins, double del) {
+      sm = new ScoringMatrix(mat, snp, ins, del);
+   }
+
    int ksize() {
       return k;
    }

@@ -14,13 +14,13 @@ private:
    int assign(char);
 
 public:
+   ScoringMatrix(double mat, double snp, double ins, double del) {
+      scores[MAT] = mat;
+      scores[SNP] = snp;
+      scores[INS] = ins;
+      scores[DEL] = del;
+   }
    ScoringMatrix() {
-      /*
-      scores[MAT] = .96;
-      scores[SNP] = .02;
-      scores[INS] = .01;
-      scores[DEL] = .01;
-      */
       scores[MAT] = 0.0;
       scores[SNP] = 7.0;
       scores[INS] = 4.0;
@@ -35,14 +35,6 @@ public:
       {7, 7, 7, 7, 6}
       };
       */
-//      sm = 
-//      {
-//      {0.03, 6.64, 6.64, 6.64, 8.23},
-//      {6.64, 0.03, 6.64, 6.64, 8.23},
-//      {6.64, 0.03, 6.64, 6.64, 8.23},
-//      {6.64, 6.64, 6.64, 0.03, 8.23},
-//      {8.23, 8.23, 8.23, 8.23, 10.0}
-//      };
    }
    
    double score(char, char);

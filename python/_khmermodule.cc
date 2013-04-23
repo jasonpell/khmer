@@ -3253,6 +3253,23 @@ static PyObject * readaligner_align(PyObject * self, PyObject * args)
                               readAlignment);
 }
 
+static PyObject * readaligner_newscores(PyObject * self, PyObject * args)
+{
+  khmer_ReadAlignerObject * me = (khmer_ReadAlignerObject *) self;
+  Aligner * aligner = me->aligner;
+
+  double mat, snp, ins, del;
+
+  if (!PyArg_ParseTuple(args, "dddd", &mat, &snp, &ins, &del)) {
+    return NULL;
+  }
+
+  aligner->newScores(mat, snp, ins, del);
+
+  Py_INCREF(Py_None);
+  return Py_None;
+}
+
 static PyObject * readaligner_printErrorFootprint(PyObject * self, 
                                                 PyObject * args)
 {
@@ -3280,6 +3297,7 @@ static PyObject * readaligner_printErrorFootprint(PyObject * self,
 static PyMethodDef khmer_ReadAligner_methods[] = {
   {"align", readaligner_align, METH_VARARGS, ""},
   {"printErrorFootprint", readaligner_printErrorFootprint, METH_VARARGS, ""},
+  {"newScores", readaligner_newscores, METH_VARARGS, ""},
   {NULL, NULL, 0, NULL}
 };
 
